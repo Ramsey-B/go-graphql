@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+database:
+  dbname: "test_db"
+  dbuser: "dbuser"
+  dbpassword: "dbpassword"
+  dbport: 5432
+  dbhost: "localhost"
+
+EXAMPLE_VAR: "variable from config.yml"
+EXAMPLE_PATH: "path from config.yml"

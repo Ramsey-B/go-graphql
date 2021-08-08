@@ -5,6 +5,7 @@ package graph
 
 import (
 	"context"
+	"fmt"
 	"go-graphql/graph/generated"
 	"go-graphql/graph/model"
 	"go-graphql/pkg/mutations"
@@ -29,6 +30,10 @@ func (r *mutationResolver) DeleteOrder(ctx context.Context, orderID int) (bool, 
 func (r *queryResolver) Orders(ctx context.Context) ([]*model.Order, error) {
 	query := &queries.OrderQuery{DB: r.DB}
 	return query.Orders(ctx)
+}
+
+func (r *queryResolver) User(ctx context.Context) (*model.User, error) {
+	panic(fmt.Errorf("not implemented"))
 }
 
 // Mutation returns generated.MutationResolver implementation.
