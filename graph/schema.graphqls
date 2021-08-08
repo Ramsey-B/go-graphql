@@ -24,11 +24,6 @@ input ItemInput {
     quantity: Int!
 }
 
-type User {
-  name: String!
-  id: Int!
-}
-
 type Mutation {
     createOrder(input: OrderInput!): Order!
     updateOrder(orderId: Int!, input: OrderInput!): Order!
@@ -37,5 +32,4 @@ type Mutation {
 
 type Query {
     orders: [Order!]!
-    user: User
 }

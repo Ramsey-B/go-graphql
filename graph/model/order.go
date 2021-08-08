@@ -1,27 +1,15 @@
 package model
 
 type Item struct {
-	ID          int    `json:"id" gorm:"primaryKey"`
-	ProductCode string `json:"productCode"`
-	ProductName string `json:"productName"`
-	Quantity    int    `json:"quantity"`
-}
-
-type ItemInput struct {
-	ProductCode string `json:"productCode"`
-	ProductName string `json:"productName"`
-	Quantity    int    `json:"quantity"`
+	ID          int    `json:"id" gorm:"primaryKey;column:id"`
+	ProductCode string `json:"productCode" gorm:"column:product_code"`
+	ProductName string `json:"productName" gorm:"column:product_name"`
+	Quantity    int    `json:"quantity" gorm:"column:quantity"`
 }
 
 type Order struct {
-	ID           int     `json:"id"`
-	CustomerName string  `json:"customerName"`
-	OrderAmount  float64 `json:"orderAmount"`
-	Items        []*Item `json:"items"`
-}
-
-type OrderInput struct {
-	CustomerName string       `json:"customerName"`
-	OrderAmount  float64      `json:"orderAmount"`
-	Items        []*ItemInput `json:"items"`
+	ID           int     `json:"id" gorm:"column:id"`
+	CustomerName string  `json:"customerName" gorm:"column:customer_name"`
+	OrderAmount  float64 `json:"orderAmount" gorm:"column:order_amount"`
+	Items        []*Item `json:"items" gorm:"foreignKey:id"`
 }

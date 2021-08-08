@@ -5,7 +5,7 @@ package graph
 import (
 	"go-graphql/config"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 // This file will not be regenerated automatically.

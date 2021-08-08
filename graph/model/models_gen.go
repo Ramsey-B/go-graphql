@@ -2,7 +2,14 @@
 
 package model
 
-type User struct {
-	Name string `json:"name"`
-	ID   int    `json:"id"`
+type ItemInput struct {
+	ProductCode string `json:"productCode"`
+	ProductName string `json:"productName"`
+	Quantity    int    `json:"quantity"`
+}
+
+type OrderInput struct {
+	CustomerName string       `json:"customerName"`
+	OrderAmount  float64      `json:"orderAmount"`
+	Items        []*ItemInput `json:"items"`
 }

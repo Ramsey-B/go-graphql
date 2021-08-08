@@ -5,7 +5,8 @@ import (
 	"go-graphql/config"
 	"go-graphql/graph/model"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 func Init(cfg *config.Configuration) (*gorm.DB, error) {
@@ -15,7 +16,7 @@ func Init(cfg *config.Configuration) (*gorm.DB, error) {
 		return nil, err
 	}
 
-	setup(db)
+	setup(cfg, db)
 
 	return db, nil
 }
@@ -25,11 +26,9 @@ func connect(cfg *config.Configuration) (*gorm.DB, error) {
 	return gorm.Open(postgres.Open(dsn), &gorm.Config{})
 }
 
-func setup(db *gorm.DB) {
-	db.LogMode(true)
-
-	db.Exec("CREATE DATABASE IF NOT EXISTS test_db")
-	db.Exec("USE test_db")
+// this will likely be replaced with a tool like sqitch
+func setup(cfg *config.Configuration, db *gorm.DB) {
+	db.Exec(fmt.Sprintf("CREATE '%s'", cfg.Database.DBName))
 
 	// Migration to create tables for Order and Item schema
 	db.AutoMigrate(&model.Order{}, &model.Item{})

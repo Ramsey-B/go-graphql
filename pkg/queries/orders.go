@@ -4,7 +4,7 @@ import (
 	"context"
 	"go-graphql/graph/model"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 type OrderQuery struct {

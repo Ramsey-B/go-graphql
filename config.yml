@@ -2,9 +2,9 @@ server:
   port: 8080
 
 database:
-  dbname: "test_db"
-  dbuser: "dbuser"
-  dbpassword: "dbpassword"
+  dbname: "postgres"
+  dbuser: "postgres"
+  dbpassword: "somepassword"
   dbport: 5432
   dbhost: "localhost"
 
